@@ -1,0 +1,3 @@
+@import "compass";
+@import "../bower_components/susy/sass/susy"; // Including susy manually so we can use the Bower version
+@import "CSS:../bower_components/normalize.css/normalize"; // Importing css file using sass-css-importer gem
