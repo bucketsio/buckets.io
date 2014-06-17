@@ -1,3 +1,51 @@
 @import "compass";
 @import "../bower_components/susy/sass/susy"; // Including susy manually so we can use the Bower version
 @import "CSS:../bower_components/normalize.css/normalize"; // Importing css file using sass-css-importer gem
+
+
+
+/* COLORS
+----------------------------------------------- */
+$accentColor: 			#F6CF48;
+$accentColorMuted: 		#695D36;
+$accentTextColor: 		#625835;
+
+
+/* TYPOGRAPHY
+----------------------------------------------- */
+a {
+	text-decoration: none;
+}
+
+/* LAYOUT
+----------------------------------------------- */
+$susy: (
+	columns: 12,
+	gutters: 1/4,
+);
+
+
+.container {
+	@include container(64em); // 1024px
+}
+
+/* 
+----------------------------------------------- */
+.button {
+	padding: 10px;
+	@include border-radius(2px);
+}
+
+
+/* HERO
+----------------------------------------------- */
+.hero {
+	background: $accentColor;
+	color: $accentTextColor;
+	text-align: center;
+}
+
+.button.email {
+	color: $accentColor;
+	background: $accentTextColor;
+}
