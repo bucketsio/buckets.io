@@ -54,6 +54,7 @@ h3 {
 $susy: (
 	columns: 16,
 	gutters: 1/1.5,
+	global-box-sizing: border-box,
 	debug: (
 		image: show-columns,
 		color: rgba(#000, .2),
@@ -119,6 +120,8 @@ section {
 		display: block;
 		padding: 20px;
 		width: 100%;
+
+		@extend %border-box;
 	}
 }
 
