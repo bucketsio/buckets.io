@@ -37,7 +37,7 @@ h2 {
 	font-weight: 600;
 	text-align: center;
 
-	@include type-size(2.2);
+	@include type-size(2.2, 2.6);
 }
 
 h3 {
@@ -55,12 +55,12 @@ $susy: (
 	columns: 16,
 	gutters: 1/1.5,
 	global-box-sizing: border-box,
-	debug: (
-		image: show-columns,
-		color: rgba(#000, .2),
-		output: overlay,
-		toggle: top right,
-	)
+	// debug: (
+	// 	image: show-columns,
+	// 	color: rgba(#000, .2),
+	// 	output: overlay,
+	// 	toggle: top right,
+	// )
 );
 
 section {
@@ -112,12 +112,21 @@ section {
 	.inner {
 		@include span(8 of 16);
 		@include pre(4);
+
+		@include breakpoint(phone-big) {
+			@include span(14 of 16);
+			@include pre(1);
+		}
 	}
 
 	p {
 		color: $accentTextColor;
 		@include type-size(2.5, 4.2);
 		@include px-to-rem(margin-bottom, 4.2);
+
+		@include breakpoint(phone-big) {
+			@include type-size(1.8, 3);
+		}
 	}
 
 	.email {
@@ -167,6 +176,11 @@ section {
 /* INFO
 ----------------------------------------------- */
 .info {
+	.inner {
+		@include pre(1);
+		@include span(14 of 16);
+	}
+
 	h2 {
 		@include px-to-rem(margin-bottom, 1.8);
 		@include px-to-rem(margin-top, 9);
@@ -177,21 +191,34 @@ section {
 			margin: 60px auto 0 auto;
 			text-align: center;
 			width: 15%;
+
+			@include breakpoint(phone) {
+				margin-top: 42px;
+				width: 34%;
+			}
 		}
 	}
 
 	.col {
 		float: left;
-		width: span(5 of 16) + gutter();
+		width: span(5 of 14) + gutter(14);
 	}
 
 	.col-1 {
-		margin-left: span(3 of 16) - gutter();
-		margin-right: gutter() + gutter() + gutter();
+		margin-left: span(2 of 14) - gutter(14);
+		margin-right: gutter(14) + gutter(14) + gutter(14);
 	}
 
 	h3 {
 		@include px-to-rem(margin-top, 4.8);
+	}
+
+	@include breakpoint(phone-big) {
+		.col {
+			margin-right: 0;
+			@include span(12 of 14);
+			@include pre(1 of 14);
+		}
 	}
 }
 
