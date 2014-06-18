@@ -3,8 +3,8 @@
 @import "CSS:../bower_components/normalize.css/normalize"; // Importing css file using sass-css-importer gem
 @import "modules/_mixins";
 
-@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,600);
-
+// @import url(http://fonts.googleapis.com/css?family=Open+Sans:400,600);
+// 
 
 /* COLORS
 ----------------------------------------------- */
@@ -18,14 +18,23 @@ $lightGray: 				#d4d4d4;
 
 /* TYPOGRAPHY
 ----------------------------------------------- */
+%primary-font {
+	font-family: "freight-sans-pro",sans-serif;
+}
+
+%secondary-font {
+	font-family: "brandon-grotesque",sans-serif;
+}
+
 body {
-	font-family: 'Open Sans', sans-serif;
+	// font-family: 'Open Sans', sans-serif;
+	@extend %secondary-font;
 }
 
 p {
 	color: $textColor;
 
-	@include type-size(1.4, 2.6);
+	@include type-size(1.4, 2.4);
 }
 
 a {
