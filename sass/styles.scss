@@ -3,20 +3,29 @@
 @import "CSS:../bower_components/normalize.css/normalize"; // Importing css file using sass-css-importer gem
 @import "modules/_mixins";
 
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,700,600);
+
 
 /* COLORS
 ----------------------------------------------- */
-$accentColor: 			#F6CF48;
-$accentColorMuted: 		#695D36;
-$accentTextColor: 		#625835;
-$textColor: 			#8f8f8f;
-$lightGray: 			#d4d4d4;
+$accentColor: 				#F6CF48;
+$accentColorMuted: 			#695D36;
+$accentTextColor: 			#625835;
+$textColor: 				#8f8f8f;
+$textColorDark: 			#272727;
+$lightGray: 				#d4d4d4;
 
 
 /* TYPOGRAPHY
 ----------------------------------------------- */
+body {
+	font-family: 'Open Sans', sans-serif;
+}
+
 p {
 	color: $textColor;
+
+	@include type-size(1.4, 2.6);
 }
 
 a {
@@ -24,7 +33,20 @@ a {
 }
 
 h2 {
+	color: $textColorDark;
+	font-weight: 600;
 	text-align: center;
+
+	@include type-size(2.2);
+}
+
+h3 {
+	color: $textColorDark;
+	font-weight: 600;
+	letter-spacing: -0.03em;
+	text-transform: uppercase;
+
+	@include type-size(1.6);
 }
 
 /* LAYOUT
@@ -32,12 +54,12 @@ h2 {
 $susy: (
 	columns: 16,
 	gutters: 1/1.5,
-	// debug: (
-	// 	image: show-columns,
-	// 	color: rgba(#000, .2),
-	// 	output: overlay,
-	// 	toggle: top right,
-	// )
+	debug: (
+		image: show-columns,
+		color: rgba(#000, .2),
+		output: overlay,
+		toggle: top right,
+	)
 );
 
 section {
@@ -89,7 +111,7 @@ section {
 
 	p {
 		color: $accentTextColor;
-		@include type-size(2.7, 4.5);
+		@include type-size(2.5, 4.2);
 		@include px-to-rem(margin-bottom, 4.2);
 	}
 
@@ -109,7 +131,7 @@ section {
 ----------------------------------------------- */
 .info {
 	h2 {
-		@include px-to-rem(margin-bottom, 9);
+		@include px-to-rem(margin-bottom, 6.9);
 		@include px-to-rem(margin-top, 9);
 	}
 
@@ -119,8 +141,12 @@ section {
 	}
 
 	.col-1 {
-		margin-left: span(3 of 16);
-		margin-right: gutter();
+		margin-left: span(3 of 16) - gutter();
+		margin-right: gutter() + gutter() + gutter();
+	}
+
+	h3 {
+		@include px-to-rem(margin-top, 4.8);
 	}
 }
 
