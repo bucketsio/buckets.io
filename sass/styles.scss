@@ -127,6 +127,20 @@ section {
 
 		@extend %border-box;
 	}
+
+	form {
+		position: relative;
+
+		input[type="submit"] {
+			background: url('/images/arrow-right.svg') no-repeat center;
+			background-size: 20%;
+			border: none;
+			color: transparent;
+			position: absolute;
+			right: 0;
+			top: 25%;
+		}
+	}
 }
 
 .button.email {
@@ -138,8 +152,16 @@ section {
 ----------------------------------------------- */
 .info {
 	h2 {
-		@include px-to-rem(margin-bottom, 6.9);
+		@include px-to-rem(margin-bottom, 1.8);
 		@include px-to-rem(margin-top, 9);
+
+		&:after {
+			content: url('/images/zig-zag.svg');
+			display: block;
+			margin: 60px auto 0 auto;
+			text-align: center;
+			width: 15%;
+		}
 	}
 
 	.col {
