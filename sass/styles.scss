@@ -30,8 +30,14 @@ h2 {
 /* LAYOUT
 ----------------------------------------------- */
 $susy: (
-	columns: 12,
-	gutters: 1/4,
+	columns: 16,
+	gutters: 1/1.5,
+	// debug: (
+	// 	image: show-columns,
+	// 	color: rgba(#000, .2),
+	// 	output: overlay,
+	// 	toggle: top right,
+	// )
 );
 
 section {
@@ -46,7 +52,8 @@ section {
 /* 
 ----------------------------------------------- */
 .button {
-	display: inline-block;
+	border: none;
+	display: inline-block;	
 	padding: 10px 20px;
 	@include border-radius(2px);
 
@@ -59,7 +66,7 @@ section {
 	display: inline-block;
 	text-align: center;
 	width: 100%;
-	
+
 	@extend %clearfix;
 }
 
@@ -76,8 +83,8 @@ section {
 	}
 
 	.inner {
-		@include span(6 of 12);
-		@include pre(3);
+		@include span(8 of 16);
+		@include pre(4);
 	}
 
 	p {
@@ -107,16 +114,13 @@ section {
 	}
 
 	.col {
-		@include span(4 of 12);
+		float: left;
+		width: span(5 of 16) + gutter();
 	}
 
 	.col-1 {
-		@include pre(2);
-	}
-
-	.col-2 {
-		@include pre(1);
-		@include post(1);
+		margin-left: span(3 of 16);
+		margin-right: gutter();
 	}
 }
 
@@ -124,6 +128,12 @@ section {
 	border-color: $lightGray;
 	color: $lightGray;
 
-	@include px-to-rem(margin-bottom, 3);
-	@include px-to-rem(margin-top, 3);
+	@include px-to-rem(margin-bottom, 6.3);
+	@include px-to-rem(margin-top, 6.3);
+	@extend %basic-animation;
+
+	&:hover {
+		border-color: $accentTextColor;
+		color: $accentTextColor;
+	}
 }
