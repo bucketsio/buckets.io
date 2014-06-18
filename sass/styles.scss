@@ -3,7 +3,7 @@
 @import "CSS:../bower_components/normalize.css/normalize"; // Importing css file using sass-css-importer gem
 @import "modules/_mixins";
 
-@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,700,600);
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,600);
 
 
 /* COLORS
@@ -126,6 +126,22 @@ section {
 		width: 100%;
 
 		@extend %border-box;
+
+		&::-webkit-input-placeholder {
+			color: $accentColor;
+		}
+
+		&:-moz-placeholder { /* Firefox 18- */
+			color: $accentColor;  
+		}
+
+		&::-moz-placeholder {  /* Firefox 19+ */
+			color: $accentColor;  
+		}
+
+		&:-ms-input-placeholder {  
+			color: $accentColor;  
+		}
 	}
 
 	form {
