@@ -1,7 +1,7 @@
 @import "compass";
 @import "../bower_components/susy/sass/susy"; // Including susy manually so we can use the Bower version
 @import "CSS:../bower_components/normalize.css/normalize"; // Importing css file using sass-css-importer gem
-
+@import "modules/_mixins";
 
 
 /* COLORS
@@ -9,12 +9,22 @@
 $accentColor: 			#F6CF48;
 $accentColorMuted: 		#695D36;
 $accentTextColor: 		#625835;
+$textColor: 			#8f8f8f;
+$lightGray: 			#d4d4d4;
 
 
 /* TYPOGRAPHY
 ----------------------------------------------- */
+p {
+	color: $textColor;
+}
+
 a {
 	text-decoration: none;
+}
+
+h2 {
+	text-align: center;
 }
 
 /* LAYOUT
@@ -24,6 +34,10 @@ $susy: (
 	gutters: 1/4,
 );
 
+section {
+	display: inline-block;
+	width: 100%;
+}
 
 .container {
 	@include container(64em); // 1024px
@@ -32,8 +46,21 @@ $susy: (
 /* 
 ----------------------------------------------- */
 .button {
-	padding: 10px;
+	display: inline-block;
+	padding: 10px 20px;
 	@include border-radius(2px);
+
+	&.stroke {
+		border: 1px solid;
+	}
+}
+
+.button-container {
+	display: inline-block;
+	text-align: center;
+	width: 100%;
+	
+	@extend %clearfix;
 }
 
 
@@ -41,11 +68,62 @@ $susy: (
 ----------------------------------------------- */
 .hero {
 	background: $accentColor;
-	color: $accentTextColor;
-	text-align: center;
+	@include px-to-rem(padding-bottom, 12);
+	@include px-to-rem(padding-top, 9);
+
+	.logo, p {
+		text-align: center;
+	}
+
+	.inner {
+		@include span(6 of 12);
+		@include pre(3);
+	}
+
+	p {
+		color: $accentTextColor;
+		@include type-size(2.7, 4.5);
+		@include px-to-rem(margin-bottom, 4.2);
+	}
+
+	.email {
+		display: block;
+		padding: 20px;
+		width: 100%;
+	}
 }
 
 .button.email {
 	color: $accentColor;
 	background: $accentTextColor;
+}
+
+/* INFO
+----------------------------------------------- */
+.info {
+	h2 {
+		@include px-to-rem(margin-bottom, 9);
+		@include px-to-rem(margin-top, 9);
+	}
+
+	.col {
+		@include span(4 of 12);
+	}
+
+	.col-1 {
+		@include pre(2);
+	}
+
+	.col-2 {
+		@include pre(1);
+		@include post(1);
+	}
+}
+
+.github {
+	border-color: $lightGray;
+	color: $lightGray;
+
+	@include px-to-rem(margin-bottom, 3);
+	@include px-to-rem(margin-top, 3);
 }
