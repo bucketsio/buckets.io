@@ -2,9 +2,7 @@
 @import "../bower_components/susy/sass/susy"; // Including susy manually so we can use the Bower version
 @import "CSS:../bower_components/normalize.css/normalize"; // Importing css file using sass-css-importer gem
 @import "modules/_mixins";
-
-// @import url(http://fonts.googleapis.com/css?family=Open+Sans:400,600);
-// 
+ 
 
 /* COLORS
 ----------------------------------------------- */
@@ -18,23 +16,23 @@ $lightGray: 				#d4d4d4;
 
 /* TYPOGRAPHY
 ----------------------------------------------- */
-%primary-font {
-	font-family: "freight-sans-pro",sans-serif;
-}
+// %primary-font {
+// 	font-family: "brandon-grotesque",sans-serif;
+// }
 
-%secondary-font {
+%primary-font {
 	font-family: "brandon-grotesque",sans-serif;
 }
 
 body {
-	// font-family: 'Open Sans', sans-serif;
-	@extend %secondary-font;
+	@extend %primary-font;
 }
 
 p {
 	color: $textColor;
 
-	@include type-size(1.6, 2.5);
+	// @extend %primary-font;
+	@include type-size(1.6, 2.4);
 }
 
 a {
@@ -46,16 +44,16 @@ h2 {
 	font-weight: 600;
 	text-align: center;
 
-	@include type-size(2.2, 2.6);
+	@include type-size(2.7, 2.6);
 }
 
 h3 {
 	color: $textColorDark;
 	font-weight: 600;
-	letter-spacing: -0.03em;
+	// letter-spacing: -0.03em;
 	text-transform: uppercase;
 
-	@include type-size(1.6);
+	@include type-size(1.7);
 }
 
 /* LAYOUT
@@ -86,11 +84,11 @@ section {
 .button {
 	border: none;
 	display: inline-block;	
-	padding: 10px 20px;
+	padding: 14px 20px;
 	@include border-radius(2px);
 
 	&.stroke {
-		border: 1px solid;
+		border: 2px solid;
 	}
 }
 
@@ -130,20 +128,22 @@ section {
 
 	p {
 		color: $accentTextColor;
-		@include type-size(2.5, 4.2);
+		@include type-size(3, 4.5);
 		@include px-to-rem(margin-bottom, 4.2);
 
 		@include breakpoint(phone-big) {
-			@include type-size(1.8, 3);
+			@include type-size(2.1, 3.6);
 		}
 	}
 
 	.email {
 		display: block;
+		letter-spacing: .03em;
 		padding: 20px;
 		width: 100%;
 
 		@extend %border-box;
+		@include type-size(1.9, 2.4);
 
 		&::-webkit-input-placeholder {
 			color: $accentColor;
@@ -172,7 +172,7 @@ section {
 			color: transparent;
 			position: absolute;
 			right: 0;
-			top: 25%;
+			top: 20px;
 		}
 	}
 }
@@ -219,7 +219,7 @@ section {
 	}
 
 	h3 {
-		@include px-to-rem(margin-top, 4.8);
+		@include px-to-rem(margin-top, 5.1);
 	}
 
 	@include breakpoint(phone-big) {
@@ -234,10 +234,12 @@ section {
 .github {
 	border-color: $lightGray;
 	color: $lightGray;
+	text-transform: uppercase;
 
 	@include px-to-rem(margin-bottom, 6.3);
 	@include px-to-rem(margin-top, 6.3);
 	@extend %basic-animation;
+	@include type-size(1.3);
 
 	&:hover {
 		border-color: $accentTextColor;
