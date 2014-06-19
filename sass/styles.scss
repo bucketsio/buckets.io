@@ -1,0 +1,253 @@
+@import "compass";
+@import "../bower_components/susy/sass/susy"; // Including susy manually so we can use the Bower version
+@import "CSS:../bower_components/normalize.css/normalize"; // Importing css file using sass-css-importer gem
+@import "modules/_mixins";
+ 
+
+/* COLORS
+----------------------------------------------- */
+$accentColor: 				#F6CF48;
+$accentColorMuted: 			#695D36;
+$accentTextColor: 			#625835;
+$textColor: 				#8f8f8f;
+$textColorDark: 			#272727;
+$lightGray: 				#cdcdcd;
+
+
+/* TYPOGRAPHY
+----------------------------------------------- */
+// %primary-font {
+// 	font-family: "brandon-grotesque",sans-serif;
+// }
+
+%primary-font {
+	font-family: "brandon-grotesque",sans-serif;
+}
+
+body {
+	@extend %primary-font;
+}
+
+p {
+	color: $textColor;
+
+	// @extend %primary-font;
+	@include type-size(1.6, 2.4);
+}
+
+a {
+	text-decoration: none;
+}
+
+h2 {
+	color: $textColorDark;
+	font-weight: 600;
+	text-align: center;
+
+	@include type-size(2.7, 2.6);
+}
+
+h3 {
+	color: $textColorDark;
+	font-weight: 600;
+	// letter-spacing: -0.03em;
+	text-transform: uppercase;
+
+	@include type-size(1.7);
+}
+
+/* LAYOUT
+----------------------------------------------- */
+$susy: (
+	columns: 16,
+	gutters: 1/1.5,
+	global-box-sizing: border-box,
+	// debug: (
+	// 	image: show-columns,
+	// 	color: rgba(#000, .2),
+	// 	output: overlay,
+	// 	toggle: top right,
+	// )
+);
+
+section {
+	display: inline-block;
+	width: 100%;
+}
+
+.container {
+	@include container(64em); // 1024px
+}
+
+/* 
+----------------------------------------------- */
+.button {
+	border: none;
+	display: inline-block;	
+	padding: 14px 20px;
+	@include border-radius(2px);
+
+	&.stroke {
+		border: 2px solid;
+	}
+}
+
+.button-container {
+	display: inline-block;
+	text-align: center;
+	width: 100%;
+
+	@extend %clearfix;
+}
+
+
+/* HERO
+----------------------------------------------- */
+.hero {
+	background: $accentColor;
+	@include px-to-rem(padding-bottom, 12);
+	@include px-to-rem(padding-top, 9);
+
+	.logo {
+		@include px-to-rem(padding-bottom, 2.4);
+	}
+
+	.logo, p {
+		text-align: center;
+	}
+
+	.inner {
+		@include span(8 of 16);
+		@include pre(4);
+
+		@include breakpoint(phone-big) {
+			@include span(14 of 16);
+			@include pre(1);
+		}
+	}
+
+	p {
+		color: $accentTextColor;
+		@include type-size(3, 4.5);
+		@include px-to-rem(margin-bottom, 4.2);
+
+		@include breakpoint(phone-big) {
+			@include type-size(2.1, 3.6);
+		}
+	}
+
+	.email {
+		display: block;
+		letter-spacing: .03em;
+		padding: 20px;
+		width: 100%;
+
+		@extend %border-box;
+		@include type-size(1.9, 2.4);
+		@extend %basic-animation;
+
+		&::-webkit-input-placeholder {
+			color: $accentColor;
+		}
+
+		&:-moz-placeholder { /* Firefox 18- */
+			color: $accentColor;  
+		}
+
+		&::-moz-placeholder {  /* Firefox 19+ */
+			color: $accentColor;  
+		}
+
+		&:-ms-input-placeholder {  
+			color: $accentColor;  
+		}
+
+		&:hover, &:focus, &:active {			
+			@include transform(scale(1.02));
+		}
+	}
+
+	form {
+		position: relative;
+
+		input[type="submit"] {
+			background: url('../images/arrow-right.svg') no-repeat center;
+			background-size: 20%;
+			border: none;
+			color: transparent;
+			position: absolute;
+			right: 0;
+			top: 20px;
+		}
+	}
+}
+
+.button.email {
+	color: $accentColor;
+	background: $accentTextColor;
+}
+
+/* INFO
+----------------------------------------------- */
+.info {
+	.inner {
+		@include pre(1);
+		@include span(14 of 16);
+	}
+
+	h2 {
+		@include px-to-rem(margin-bottom, 1.8);
+		@include px-to-rem(margin-top, 9);
+
+		&:after {
+			content: url('../images/zig-zag.svg');
+			display: block;
+			margin: 60px auto 0 auto;
+			text-align: center;
+			width: 15%;
+
+			@include breakpoint(phone) {
+				margin-top: 42px;
+				width: 34%;
+			}
+		}
+	}
+
+	.col {
+		float: left;
+		width: span(5 of 14) + gutter(14);
+	}
+
+	.col-1 {
+		margin-left: span(2 of 14) - gutter(14);
+		margin-right: gutter(14) + gutter(14) + gutter(14);
+	}
+
+	h3 {
+		@include px-to-rem(margin-top, 4.8);
+	}
+
+	@include breakpoint(phone-big) {
+		.col {
+			margin-right: 0;
+			@include span(12 of 14);
+			@include pre(1 of 14);
+		}
+	}
+}
+
+.github {
+	border-color: $lightGray;
+	color: $lightGray;
+	text-transform: uppercase;
+
+	@include px-to-rem(margin-bottom, 6.3);
+	@include px-to-rem(margin-top, 6.3);
+	@extend %basic-animation;
+	@include type-size(1.3);
+
+	&:hover {
+		border-color: $accentTextColor;
+		color: $accentTextColor;
+	}
+}
