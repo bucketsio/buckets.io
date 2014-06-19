@@ -224,7 +224,7 @@ section {
 	}
 
 	h3 {
-		@include px-to-rem(margin-top, 5.1);
+		@include px-to-rem(margin-top, 4.8);
 	}
 
 	@include breakpoint(phone-big) {
