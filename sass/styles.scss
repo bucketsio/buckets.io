@@ -99,6 +99,10 @@ section {
 	@include px-to-rem(padding-bottom, 12);
 	@include px-to-rem(padding-top, 9);
 
+	img {
+		max-width: 124px;
+	}
+
 	.logo {
 		@include px-to-rem(padding-bottom, 2.4);
 	}
