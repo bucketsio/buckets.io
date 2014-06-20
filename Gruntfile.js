@@ -16,8 +16,7 @@ module.exports = function(grunt) {
           imagesDir: 'dist/images/',
           javascriptsDir: 'dist/js/',
           fontsDir: 'dist/fonts/',
-          outputStyle: 'compressed',
-          require: 'sass-css-importer'
+          outputStyle: 'compressed'
         }
       }
     },
@@ -25,12 +24,19 @@ module.exports = function(grunt) {
       options: {
         stripBanners: true
       },
-      dist: {
+      js: {
         src: [
           'bower_components/jquery/jquery.js',
           'js/main.js'
         ],
         dest: 'dist/js/scripts.min.js'
+      },
+      css: {
+        src: [
+          'bower_components/normalize.css/normalize.css',
+          'dist/css/styles.css'
+        ],
+        dest: 'dist/css/styles.css'
       }
     },
     uglify: {
@@ -41,12 +47,21 @@ module.exports = function(grunt) {
         dest: 'dist/js/script.min.js'
       }
     },
+    cssmin: {
+      minify: {
+        expand: true,
+        cwd: 'dist/css/',
+        src: ['*.css', '!*.min.css'],
+        dest: 'dist/css/',
+        ext: '.css'
+      }
+    },
     watch: {
       compass: {
         files: [
           'sass/**/**'          
         ],
-        tasks: ['compass'],
+        tasks: ['compass', 'concat:css'],
         options: {
           livereload: true,
           outputStyle: 'compressed'
@@ -64,7 +79,7 @@ module.exports = function(grunt) {
         files: [
           'js/*.*',
         ],
-        tasks: ['concat'],
+        tasks: ['concat:js'],
         options: {
           livereload: true
         }
@@ -105,6 +120,6 @@ module.exports = function(grunt) {
 
   // Default task.
   grunt.registerTask('default', ['imagemin', 'concat', 'compass', 'uglify']);
-  grunt.registerTask('push-stage', ['imagemin', 'compass', 'concat', 'uglify']);
+  grunt.registerTask('push-gh-pages', ['imagemin', 'compass', 'concat', 'uglify', 'cssmin', 'gh-pages']);
   grunt.registerTask('server', ['connect', 'watch']);
 };
