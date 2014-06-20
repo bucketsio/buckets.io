@@ -1,8 +1,6 @@
 @import "compass";
-@import "../bower_components/susy/sass/susy"; // Including susy manually so we can use the Bower version
-@import "CSS:../bower_components/normalize.css/normalize"; // Importing css file using sass-css-importer gem
-@import "modules/_mixins";
- 
+@import "susy";
+@import "modules/_mixins"; 
 
 /* COLORS
 ----------------------------------------------- */
@@ -16,10 +14,6 @@ $lightGray: 				#cdcdcd;
 
 /* TYPOGRAPHY
 ----------------------------------------------- */
-// %primary-font {
-// 	font-family: "brandon-grotesque",sans-serif;
-// }
-
 %primary-font {
 	font-family: "brandon-grotesque",sans-serif;
 }
@@ -31,7 +25,6 @@ body {
 p {
 	color: $textColor;
 
-	// @extend %primary-font;
 	@include type-size(1.6, 2.4);
 }
 
@@ -50,7 +43,6 @@ h2 {
 h3 {
 	color: $textColorDark;
 	font-weight: 600;
-	// letter-spacing: -0.03em;
 	text-transform: uppercase;
 
 	@include type-size(1.7);
@@ -100,13 +92,16 @@ section {
 	@extend %clearfix;
 }
 
-
 /* HERO
 ----------------------------------------------- */
 .hero {
 	background: $accentColor;
 	@include px-to-rem(padding-bottom, 12);
 	@include px-to-rem(padding-top, 9);
+
+	img {
+		max-width: 124px;
+	}
 
 	.logo {
 		@include px-to-rem(padding-bottom, 2.4);
