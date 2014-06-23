@@ -1,6 +1,6 @@
 @import "compass";
 @import "susy";
-@import "modules/_mixins"; 
+@import "modules/_mixins";
 
 /* COLORS
 ----------------------------------------------- */
@@ -20,21 +20,34 @@ $lightGray: 				#cdcdcd;
 
 body {
 	@extend %primary-font;
+	font-weight: 300;
+	text-rendering: optimizeLegibility;
 }
 
 p {
 	color: $textColor;
 
-	@include type-size(1.6, 2.4);
+	@include type-size(1.8, 2.6);
 }
 
 a {
 	text-decoration: none;
+	color: #777;
+	font-weight: 500;
+
+	&:hover {
+		text-decoration: underline;
+		color: #444;
+	}
+}
+
+strong {
+	font-weight: 500;
 }
 
 h2 {
 	color: $textColorDark;
-	font-weight: 600;
+	font-weight: 500;
 	text-align: center;
 
 	@include type-size(2.7, 2.6);
@@ -42,10 +55,11 @@ h2 {
 
 h3 {
 	color: $textColorDark;
-	font-weight: 600;
+	font-weight: 500;
 	text-transform: uppercase;
 
-	@include type-size(1.7);
+	@include type-size(1.2);
+	letter-spacing: 1px;
 }
 
 /* LAYOUT
@@ -71,11 +85,11 @@ section {
 	@include container(64em); // 1024px
 }
 
-/* 
+/*
 ----------------------------------------------- */
 .button {
 	border: none;
-	display: inline-block;	
+	display: inline-block;
 	padding: 14px 20px;
 	@include border-radius(2px);
 
@@ -103,17 +117,22 @@ section {
 		max-width: 124px;
 	}
 
-	.logo {
-		@include px-to-rem(padding-bottom, 2.4);
-	}
-
 	.logo, p {
 		text-align: center;
 	}
 
+	a {
+		color: $accentTextColor;
+		font-weight: 300;
+	}
+
+	.logo {
+		@include user-select(none);
+	}
+
 	.inner {
-		@include span(8 of 16);
-		@include pre(4);
+		@include span(14 of 16);
+		@include pre(1);
 
 		@include breakpoint(phone-big) {
 			@include span(14 of 16);
@@ -146,18 +165,18 @@ section {
 		}
 
 		&:-moz-placeholder { /* Firefox 18- */
-			color: $accentColor;  
+			color: $accentColor;
 		}
 
 		&::-moz-placeholder {  /* Firefox 19+ */
-			color: $accentColor;  
+			color: $accentColor;
 		}
 
-		&:-ms-input-placeholder {  
-			color: $accentColor;  
+		&:-ms-input-placeholder {
+			color: $accentColor;
 		}
 
-		&:hover, &:focus, &:active {			
+		&:hover, &:focus, &:active {
 			@include transform(scale(1.02));
 		}
 	}
@@ -177,9 +196,26 @@ section {
 	}
 }
 
+form {
+	@include span(8 of 16);
+	@include pre(4);
+
+	@include breakpoint(phone-big) {
+		@include span(14 of 16);
+		@include pre(1);
+	}
+}
+
 .button.email {
-	color: $accentColor;
+	color: #fff;
 	background: $accentTextColor;
+}
+
+.response {
+	padding: 15px 10px 0;
+	text-align: center;
+	color: $accentColorMuted;
+	font-weight: 500;
 }
 
 /* INFO
