@@ -1,6 +1,7 @@
 @import "compass";
 @import "susy";
 @import "modules/_mixins";
+@import "modules/_animations";
 
 /* COLORS
 ----------------------------------------------- */
@@ -28,6 +29,10 @@ p {
 	color: $textColor;
 
 	@include type-size(1.8, 2.6);
+
+	&.small {
+		@include type-size(1.4, 2.1);
+	}
 }
 
 a {
@@ -85,7 +90,11 @@ section {
 	@include container(64em); // 1024px
 }
 
-/*
+.center {
+	text-align: center;
+}
+
+/* BUTTONS
 ----------------------------------------------- */
 .button {
 	border: none;
@@ -95,6 +104,10 @@ section {
 
 	&.stroke {
 		border: 2px solid;
+	}
+
+	&:hover {
+		text-decoration: none;
 	}
 }
 
@@ -280,5 +293,21 @@ form {
 	&:hover {
 		border-color: $accentTextColor;
 		color: $accentTextColor;
+	}
+}
+
+/* FOOTER
+----------------------------------------------- */
+footer {
+	background: $textColorDark;
+	display: inline-block;
+	width: 100%;
+
+	p {
+		letter-spacing: 0.02em;
+		opacity: .8;
+
+		@extend .center;
+		@extend .small;
 	}
 }
