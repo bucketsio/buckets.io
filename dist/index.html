@@ -13,7 +13,8 @@
         <script type="text/javascript" src="//use.typekit.net/ssf3mxn.js"></script>
         <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
     </head>
-    <body class="animated fadeIn">
+    <body>
+        <script>document.body.className+=' has-js';</script>
         <!--[if lt IE 7]>
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
@@ -21,8 +22,8 @@
         <section class="hero">
             <div class="container">
                 <div class="inner">
-                    <h1 class="logo bounce-animation"><img src="images/buckets-logo.svg" alt="Buckets"></h1>
-                    <p><strong>Buckets</strong> is an Open Source CMS built on Node.js and MongoDB. It’s currently under active development on <a href="https://assemblymade.com/buckets">Assembly</a>.</p>
+                    <h1 class="logo bounce-animation"><img draggable="false" src="images/buckets-logo.svg" alt="Buckets" width="124" height="110"></h1>
+                    <p><strong>Buckets</strong> is an Open Source CMS built on Node.js&nbsp;and&nbsp;MongoDB. <br>It’s currently under active development on <a href="https://assemblymade.com/buckets">Assembly</a>.</p>
                     <form action="http://assemblymade.us8.list-manage2.com/subscribe/post?u=e8888d19fc5223c4d9a10c215&amp;id=764781c73a" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
                         <input class="button email" type="email" name="EMAIL" placeholder="Email me when it’s ready" id="mce-EMAIL">
                         <input type="submit" value="Email">
@@ -46,10 +47,10 @@
                         <p>Buckets lets you store your content in an structured, but flexible, way.</p>
 
                         <h3>Wicked Fast</h3>
-                        <p>Buckets is built for speed, leveraging a modern, all JavaScript, development tech stack.</p>
+                        <p>Buckets is fast—like really fast. It leverages a modern, all-JavaScript development stack. Your customers will love it too. It works where you work and they work, from sleek layouts for the big screen to a fast responsive layout when you are on your mobile phone.</p>
 
                         <h3>Open Source &amp; Community Built</h3>
-                        <p>Buckets is open source and managed publicly on Assembly. By contributing to Buckets development on Assembly, designers and developers also earn a portion of its profit. <a href="https://assemblymade.com/buckets">Learn more »</a></p>
+                        <p>Buckets is open source and managed by a community of makers on Assembly. By contributing to Buckets development, designers and developers also earn a portion of its profit. <a href="https://assemblymade.com/buckets">Learn more »</a></p>
                     </div>
 
                     <div class="col col-2">
@@ -60,10 +61,13 @@
                         <p>Buckets can be used as Middleware for any Express app. Install it as an NPM module or <a href="https://github.com/asm-products/buckets">install the source directly</a>.</p>
 
                         <h3>For People</h3>
-                        <p>Buckets’ interface lets users add and manage content in the simplest, fastest way possible. </p>
+                        <p>Buckets is powerful but it also gets out of your way. Quickly add, remove, and update content at the speed of thought.</p>
                     </div>
 
-                    <div class="button-container"><a class="button stroke github" href="https://github.com/asm-products/buckets" target="_blank">View Buckets on Github</a></div>
+                    <div class="button-container">
+                        <a class="button stroke github" href="https://github.com/asm-products/buckets" target="_blank">Fork Buckets on Github</a>
+                        <a class="button stroke github" href="https://twitter.com/bucketsio" target="_blank">Follow Buckets on Twitter</a>
+                    </div>
                 </div>
             </div>
         </section>
@@ -277,6 +281,93 @@
         }
 
         </script>
+        <script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/1.12.1/TweenLite.min.js"></script>
+        <script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/1.12.1/easing/EasePack.min.js"></script>
+        <script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/1.12.1/jquery.gsap.min.js"></script>
+        <script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/1.12.1/plugins/CSSPlugin.min.js"></script>
+        <script src="js/scripts.min.js"></script>
+
+        <script>
+            $(function(){
+
+                $logo = $('.logo');
+
+                jiggleLogo = function() {
+                    TweenLite.fromTo($logo, .6, {
+                      scaleX: .85
+                    }, {
+                      scaleX: 1,
+                      visibility: 'visible',
+                      ease: Elastic.easeOut
+                    });
+
+                    TweenLite.fromTo($logo, .6, {
+                      scaleY: .85
+                    }, {
+                      scaleY: 1,
+                      opacity: 1,
+                      visibility: 'visible',
+
+                      delay: .03,
+                      ease: Elastic.easeOut
+                    });
+                }
+
+                jiggleLogo()
+
+                TweenLite.from($('.hero p').css('visibility', 'visible'), .4, {
+                    opacity: 0,
+                    y: 50,
+                    scale: .9,
+                    ease: Back.easeOut,
+                    delay: .4
+                });
+
+                TweenLite.from($('.hero form').css('visibility', 'visible'), .4, {
+                    opacity: 0,
+                    y: 50,
+                    scale: .98,
+                    ease: Back.easeOut,
+                    delay: .5
+                });
+
+                $logo.click(jiggleLogo);
+
+                $columns = $('.col');
+
+                $columns.bind('inview', function(event, isInView, visiblePartX, visiblePartY) {
+                  if (isInView) {
+                    $('.col-1 > *').each(function(i, el){
+                        $el = $(el);
+                        TweenLite.from($el.css('visibility', 'visible'), .6, {
+                            // x: -200,
+                            y: 100,
+                            delay: i * .05,
+                            ease: Back.easeOut,
+                            opacity: 0
+                        });
+                    });
+                    $('.col-2 > *').each(function(i, el){
+                        $el = $(el);
+                        TweenLite.from($el.css('visibility', 'visible'), .65, {
+                            // x: 200,
+                            y: 100,
+                            delay: i * .05,
+                            ease: Back.easeInOut,
+                            opacity: 0
+                        });
+                    });
+
+                    // $('.col-1')
+                    $columns.unbind('inview')
+                  }
+                });
+
+                $(window).trigger('checkInView')
+            });
+        </script>
+
+
         <!--End mc_embed_signup-->
     </body>
 </html>

@@ -1,7 +1,6 @@
 @import "compass";
 @import "susy";
 @import "modules/_mixins";
-@import "modules/_animations";
 
 /* COLORS
 ----------------------------------------------- */
@@ -21,7 +20,7 @@ $lightGray: 				#cdcdcd;
 
 body {
 	@extend %primary-font;
-	font-weight: 300;
+	font-weight: 400;
 	text-rendering: optimizeLegibility;
 }
 
@@ -55,7 +54,7 @@ h2 {
 	font-weight: 500;
 	text-align: center;
 
-	@include type-size(2.7, 2.6);
+	@include type-size(2.7, 3.5);
 }
 
 h3 {
@@ -63,7 +62,7 @@ h3 {
 	font-weight: 500;
 	text-transform: uppercase;
 
-	@include type-size(1.2);
+	@include type-size(1.2, 1.5);
 	letter-spacing: 1px;
 }
 
@@ -100,6 +99,7 @@ section {
 	border: none;
 	display: inline-block;
 	padding: 14px 20px;
+	letter-spacing: 1px;
 	@include border-radius(2px);
 
 	&.stroke {
@@ -123,8 +123,9 @@ section {
 ----------------------------------------------- */
 .hero {
 	background: $accentColor;
-	@include px-to-rem(padding-bottom, 12);
-	@include px-to-rem(padding-top, 9);
+	overflow: hidden;
+	@include px-to-rem(padding-bottom, 10);
+	@include px-to-rem(padding-top, 7);
 
 	img {
 		max-width: 124px;
@@ -136,11 +137,7 @@ section {
 
 	a {
 		color: $accentTextColor;
-		font-weight: 300;
-	}
-
-	.logo {
-		@include user-select(none);
+		font-weight: 400;
 	}
 
 	.inner {
@@ -155,7 +152,7 @@ section {
 
 	p {
 		color: $accentTextColor;
-		@include type-size(3, 4.5);
+		@include type-size(3, 4);
 		@include px-to-rem(margin-bottom, 4.2);
 
 		@include breakpoint(phone-big) {
@@ -241,7 +238,7 @@ form {
 
 	h2 {
 		@include px-to-rem(margin-bottom, 1.8);
-		@include px-to-rem(margin-top, 9);
+		@include px-to-rem(margin-top, 7.5);
 
 		&:after {
 			content: url('../images/zig-zag.svg');
@@ -309,5 +306,11 @@ footer {
 
 		@extend .center;
 		@extend .small;
+	}
+}
+
+.has-js {
+	.logo, .hero p, .hero form, .col > * {
+		visibility: hidden;
 	}
 }
