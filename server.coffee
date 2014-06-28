@@ -11,7 +11,7 @@ app.use compress()
 
 app.use express.static "#{__dirname}/dist", maxAge: 86400000 * 7 # One week
 
-app.listen process.env.PORT || 3000
+app.listen process.env.PORT || 5000
 
 app.get '/', (req, res) ->
   res.render 'index.html'
