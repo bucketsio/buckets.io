@@ -15,7 +15,7 @@ $lightGray: 				#cdcdcd;
 /* TYPOGRAPHY
 ----------------------------------------------- */
 %primary-font {
-	font-family: "brandon-grotesque",sans-serif;
+	font-family: "brandon-grotesque", sans-serif;
 }
 
 body {
@@ -139,6 +139,10 @@ section {
 		color: $accentTextColor;
 		font-weight: 400;
 	}
+	
+	strong {
+        opacity: .5;
+	}
 
 	.inner {
 		@include span(14 of 16);
@@ -152,7 +156,7 @@ section {
 
 	p {
 		color: $accentTextColor;
-		@include type-size(2.7, 3);
+		@include type-size(2.7, 3.7);
  
 		@include breakpoint(phone-big) {
 			@include type-size(2.1, 3.6);
